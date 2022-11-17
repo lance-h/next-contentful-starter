@@ -1,9 +1,11 @@
 const space = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID
+const environment = process.env.NEXT_PUBLIC_CONTENTFUL_ENVIRONMENT_ID
 const accessToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN
 
 const client = require('contentful').createClient({
-  space: space,
-  accessToken: accessToken,
+  space,
+  environment,
+  accessToken,
 })
 
 export async function fetchEntries() {
