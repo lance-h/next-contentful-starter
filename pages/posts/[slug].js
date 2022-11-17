@@ -4,9 +4,8 @@ import { fetchEntries } from '@utils/contentfulPosts'
 
 import Header from '@components/Header'
 import Footer from '@components/Footer'
-import Post from '@components/Post'
 
-export default function Home({ posts }) {
+export default function PostPage({ post }) {
   return (
     <div className="container">
       <Head>
@@ -16,10 +15,8 @@ export default function Home({ posts }) {
 
       <main>
         <Header />
-        <div className="posts">
-          {posts.map((p) => {
-            return <Post key={p.date} date={p.date} image={p.image.fields} title={p.title} slug={p.slug} />
-          })}
+        <div>
+          <h1>Post: {post.title}</h1>
         </div>
       </main>
 
@@ -65,15 +62,26 @@ export default function Home({ posts }) {
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticPaths() {
   const res = await fetchEntries()
-  const posts = await res.map((p) => {
-    return p.fields
-  })
+  const paths = await res.map((p) => {
+    return `/posts/${p.fields.slug}`
+  });
+
+  return {
+    paths,
+    fallback: false,
+  }
+}
+
+export async function getStaticProps(context) {
+  const res = await fetchEntries()
+  console.log('GetStaticProps:post', context);
+  const post = res.find((p) => p.slug = context.params.slug);
 
   return {
     props: {
-      posts,
+      post: post?.fields,
     },
   }
 }

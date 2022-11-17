@@ -1,4 +1,6 @@
-function Post({ date, image, title }) {
+import Link from 'next/link';
+
+function Post({ date, image, title, slug }) {
   let { file, description } = image
 
   return (
@@ -6,7 +8,7 @@ function Post({ date, image, title }) {
       <img alt={description} src={`https:${file.url}`} />
       <div className="description">{description}</div>
       <div className="text">
-        <h2>{title}</h2>
+        <h2><Link href={`/posts/${slug}`}>{title}</Link></h2>
         <h3>{date.substring(0, 10)}</h3>
       </div>
 
