@@ -8,6 +8,11 @@
   status = 302
 
 [[redirects]]
+  from = "/y"
+  to = "/z"
+  status = 302
+
+[[redirects]]
   from = "/z"
   to = "/netliheart.svg"
   status = 302
