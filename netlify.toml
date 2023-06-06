@@ -17,3 +17,18 @@
   to = "/netliheart.svg"
   status = 302
   force = true
+
+[[redirects]]
+  from = "/foo/*"
+  to = "/bar/:splat"
+  status = 302
+
+# [[redirects]]
+#   from = "/bar/*"
+#   to = "/bar/:splat"
+#   status = 302
+
+[[redirects]]
+  from = "/a1/*"
+  to = "/b1/:splat/c1"
+  status = 302
