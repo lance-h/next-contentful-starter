@@ -3,12 +3,12 @@
   publish = ".next"
 
 [[redirects]]
-  from = "/a"
-  to = "/b"
+  from = "/x"
+  to = "/y"
   status = 302
 
 [[redirects]]
-  from = "/b"
+  from = "/z"
   to = "/netliheart.svg"
   status = 302
   force = true
